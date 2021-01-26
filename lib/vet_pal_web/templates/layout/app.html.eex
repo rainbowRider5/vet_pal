@@ -11,7 +11,7 @@
   <body class="d-flex flex-column h-100 bg-light">
     <header>
       <nav NAVBAR class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow">
-        <span><i class="fas fa-paw"></i> VetPal</span>
+        <span style="margin-right:1rem;font-weight:500"><i class="fas fa-paw"></i> VetPal</span>
         <button NAVTOGGLE class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
