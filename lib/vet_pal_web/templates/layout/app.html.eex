@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>VetPal · Phoenix Framework</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </head>
+  <body class="d-flex flex-column h-100 bg-light">
+    <header>
+      <nav NAVBAR class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow">
+        <span><i class="fas fa-paw"></i> VetPal</span>
+        <button NAVTOGGLE class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div DROPDOWNMENU class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <%= link "Clients", to: Routes.client_path(@conn, :index), class: "nav-link" %>
+            <%= link "Pets", to: Routes.pet_path(@conn, :index), class: "nav-link" %>
+            <%= link "Vacciness", to: Routes.vaccine_path(@conn, :index), class: "nav-link" %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main" class="container">
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= @inner_content %>
+    </main>
+
+    <footer class="footer bg-dark text-light mt-auto py-4">
+      <div class="container">
+        <span class="text-muted"><i class="fas fa-paw"></i> VetPal</span>
+      </div>
+    </footer>
+  </body>
+</html>

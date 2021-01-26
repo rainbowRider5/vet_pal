@@ -1,0 +1,3 @@
+<h1>Edit Vaccine</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.vaccine_path(@conn, :update, @vaccine)) %>

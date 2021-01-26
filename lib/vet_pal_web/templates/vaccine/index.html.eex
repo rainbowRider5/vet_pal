@@ -1,0 +1,42 @@
+<h1>Listing Vaccines</h1>
+<div class="row">
+  <div class="col-12">
+    <div class="form-group" style="display:flex; justify-content: flex-end">
+      <%= link "New vaccine", to: Routes.vaccine_path(@conn, :new), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+      <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Manufacturer</th>
+          <th>Vaccinated Pet</th>
+          <th style="text-align: center;">Options</th>
+        </tr>
+      </thead>
+      <tbody id="vaccines">
+        <%= for vaccine <- @vacciness do %>
+          <tr id="vaccine-<%= vaccine.id %>">
+            <td><%= vaccine.name %></td>
+            <td><%= vaccine.manufacturer %></td>
+            <td><%= get_vaccinated_pet(vaccine, "full_string") %></td>
+            <td style="text-align: center;">
+              <span style="margin: 0 0.5rem">
+                  <%= link "Show", to: Routes.vaccine_path(@conn, :show, vaccine) %>
+                </span>|
+              <span style="margin: 0 0.5rem">
+                <%= link "Edit", to: Routes.vaccine_path(@conn, :edit, vaccine) %>
+              </span>|
+              <span style="margin: 0 0.5rem">
+                <%= link "Delete", to: Routes.vaccine_path(@conn, :delete, vaccine), method: :delete, data: [confirm: "Are you sure?"] %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

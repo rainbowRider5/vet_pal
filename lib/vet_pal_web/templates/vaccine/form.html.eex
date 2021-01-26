@@ -1,0 +1,32 @@
+<h4 class="card-title"></h4>
+<div class="card-text">
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+<div class="form-group">
+  <%= label f, :name %>
+  <%= text_input f, :name, class: "form-control" %>
+  <%= error_tag f, :name %>
+  </div>
+<div class="form-group">
+  <%= label f, :manufacturer %>
+  <%= text_input f, :manufacturer,  class: "form-control"%>
+  <%= error_tag f, :manufacturer %>
+  </div>
+<div class="form-group">
+  <%= label f, :pet_id %>
+  <%= select f, :pet_id, Enum.map(list_pets(), fn c -> {"#{c.name} - a #{c.type} of a #{c.breed} breed",c.id} end), class: "form-control"%>
+  <%= error_tag f, :pet_id %>
+</div>
+
+<div class="form-group" style="display:flex;justify-content:flex-end">
+    <%= link "Cancel", to: Routes.vaccine_path(@conn, :index), class: "btn btn-danger mr-1" %>
+    <%= submit "Save",  class: "btn btn-primary" %>
+</div>
+</form>
+</div>
+<% end %>

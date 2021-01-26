@@ -1,0 +1,47 @@
+<h1>Listing Clients</h1>
+
+<div class="row">
+  <div class="col-12">
+    <div class="form-group" style="display:flex; justify-content: flex-end">
+      <%= link "New Client", to: Routes.client_path(@conn, :new), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+      <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>City</th>
+          <th>Address</th>
+          <th style="text-align: center;">Options</th>
+        </tr>
+      </thead>
+      <tbody id="clients">
+        <%= for client <- @clients do %>
+          <tr id="client-<%= client.id %>">
+            <td><%= client.first_name %></td>
+            <td><%= client.last_name %></td>
+            <td><%= client.city %></td>
+            <td><%= client.address %></td>
+
+            <td style="text-align: center;">
+              <span style="margin: 0 0.5rem">
+                  <%= link "Show", to: Routes.client_path(@conn, :show, client) %>
+                </span>|
+              <span style="margin: 0 0.5rem">
+                <%= link "Edit", to: Routes.client_path(@conn, :edit, client) %>
+              </span>|
+              <span style="margin: 0 0.5rem">
+              <span>
+              <%= link "Delete", to: Routes.client_path(@conn, :delete, client), method: :delete, data: [confirm: "Are you sure?"] %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

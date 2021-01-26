@@ -1,0 +1,28 @@
+<h1>Show Client</h1>
+
+<div class="row">
+  <div class="col-12">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>First Name</th>
+      <td><%= @client.first_name %>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td><%= @client.last_name %>
+    </tr>
+    <tr>
+      <th>City</th>
+      <td><%= @client.city %>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td><%= @client.address %>
+    </tr>
+  </table>
+  </div>
+  </div>
+<div class="row" style="display:flex;justify-content: space-between;padding:15px">
+<span><%= link "Back", to: Routes.client_path(@conn, :index), class: "btn" %></span>
+<span><%= link "Edit", to: Routes.client_path(@conn, :edit, @client), class: "btn btn-primary" %></span>
+</div>

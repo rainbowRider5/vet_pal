@@ -1,0 +1,2 @@
+<h1>Edit Client</h1>
+<%= render "form.html", Map.put(assigns, :action, Routes.client_path(@conn, :update, @client)) %>
